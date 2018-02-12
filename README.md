@@ -1,12 +1,12 @@
-#stm32f103c8t6_pwm_led 
+stm32f103c8t6_pwm_led 
 =======================
 中断的方式控制pwm。 <br>
 使用的timer3, ch2,ch3,ch4   <br>
 
 
-##注意事项：
+注意事项：
 ------------
-###给定pulse的值，设置占空比，看起来会呼吸
+### 给定pulse的值，设置占空比，看起来会呼吸
 ```java
 /* Private variables ---------------------------------------------------------*/
 const uint16_t MAX_PULSE=255;	
@@ -15,7 +15,7 @@ const uint8_t indexWave[]={1,1,2,2,3,4,6,8,10,14,19,25,33,44,59,80,107,143,191,2
 
 /* USER CODE END PV */
 ```
-###初始化，开启中断和使能
+### 初始化，开启中断和使能
 ```java 
 /* USER CODE BEGIN 2 */
 HAL_TIM_Base_Start_IT(&htim3);
@@ -25,7 +25,7 @@ HAL_TIM_PWM_Start(&htim3,TIM_CHANNEL_4);
   /* USER CODE END 2 */
 ```
 
-###timer3的初始化设置，注意分频：
+### timer3的初始化设置，注意分频：
 ```java
 /* TIM3 init function */
 static void MX_TIM3_Init(void)
@@ -79,7 +79,7 @@ static void MX_TIM3_Init(void)
 ```
 
 
-###在中断函数里设置pwm
+### 在中断函数里设置pwm
 ```java
 /* USER CODE BEGIN 4 */
  void change_pwm_pulse(uint32_t channel,uint16_t value)
